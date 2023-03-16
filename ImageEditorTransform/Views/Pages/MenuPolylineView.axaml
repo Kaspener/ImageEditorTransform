@@ -1,0 +1,51 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
+             x:Class="ImageEditorTransform.Views.Pages.MenuPolylineView">
+	<UserControl.Styles>
+		<Style Selector="ComboBox">
+			<Setter Property="Margin" Value="10"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+		</Style>
+		<Style Selector="TextBox">
+			<Setter Property="Margin" Value="10"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+		</Style>
+		<Style Selector="TextBlock">
+			<Setter Property="Margin" Value="10"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+		</Style>
+		<Style Selector="Rectangle.CRectangle">
+			<Setter Property="Width" Value="200"/>
+			<Setter Property="Height" Value="13"/>
+		</Style>
+	</UserControl.Styles>
+
+	<Grid RowDefinitions="30, 30, 50, 30, 30, 30, 30, 30" ColumnDefinitions="*, 1.5*">
+		<TextBlock Grid.Row="0" Grid.Column="0" Text="Имя:"/>
+		<TextBox Name="textBoxName" Grid.Row="0" Grid.Column="1" Text="{Binding Name}"/>
+		<TextBlock Grid.Row="1" Grid.Column="0" Text="Точки:"/>
+		<TextBox Name="textBoxPoints" Grid.Row="1" Grid.Column="1" Text="{Binding Points}"/>
+		<TextBlock Grid.Row="2" Grid.Column="0" Text="Цвет линии:"/>
+		<ComboBox Grid.Row="2" Grid.Column="1" Name="comboBoxColor" Items="{Binding Colors}" SelectedIndex="{Binding StrokeNum}">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<Rectangle Classes="CRectangle" Fill="{Binding}"/>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+		<TextBlock Grid.Row="3" Grid.Column="0" Text="Толщина линии:"/>
+		<NumericUpDown Name="numericUpDownStroke" Grid.Row="3" Grid.Column="1" Value="{Binding ThicknessLine}" Minimum="1" Width="218" Height="10"/>
+		<TextBlock Grid.Row="4" Grid.Column="0" Text="Центр поворота:"/>
+		<TextBox Name="textBoxRotateCenter" Grid.Row="4" Grid.Column="1" Text="{Binding Center}"/>
+		<TextBlock Grid.Row="5" Grid.Column="0" Text="Угол поворота:"/>
+		<TextBox Name="textBoxRenderTransformAngle" Grid.Row="5" Grid.Column="1" Text="{Binding Rotate}"/>
+		<TextBlock Grid.Row="6" Grid.Column="0" Text="Масштабирование:"/>
+		<TextBox Name="textBoxScaleTransform" Grid.Row="6" Grid.Column="1" Text="{Binding Scale}"/>
+		<TextBlock Grid.Row="7" Grid.Column="0" Text="Наклон:"/>
+		<TextBox Name="textBoxSkewTransform" Grid.Row="7" Grid.Column="1" Text="{Binding Skew}"/>
+	</Grid>
+</UserControl>
