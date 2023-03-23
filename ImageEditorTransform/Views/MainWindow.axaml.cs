@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Shapes;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
@@ -32,6 +33,8 @@ namespace ImageEditorTransform.Views
             {
                 if (result != null)
                 {
+                    dataContext.FigureList = new ObservableCollection<Figures>();
+                    dataContext.Shapes = new ObservableCollection<Shape>();
                     dataContext.FigureList = Serializer<ObservableCollection<Figures>>.Load(result[0]);
                     foreach(Figures f in dataContext.FigureList)
                     {
@@ -55,6 +58,8 @@ namespace ImageEditorTransform.Views
             {
                 if (result != null)
                 {
+                    dataContext.FigureList = new ObservableCollection<Figures>();
+                    dataContext.Shapes = new ObservableCollection<Shape>();
                     dataContext.FigureList = JsonSerializer<ObservableCollection<Figures>>.Load(result[0]);
                     foreach (Figures f in dataContext.FigureList)
                     {
